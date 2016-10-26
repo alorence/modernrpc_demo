@@ -11,20 +11,22 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import environ
-root = environ.Path(__file__) - 1
+root = environ.Path(__file__, '../..')
 env = environ.Env(DEBUG=(bool, False),)
-environ.Env.read_env()
+environ.Env.read_env(root('.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY', 'dummy_local_secret_key_xyz')
+SECRET_KEY = env('SECRET_KEY', default='dummy_local_secret_key_xyz')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'modernrpc.herokuapp.com'
+]
 
 
 # Application definition
@@ -74,7 +76,7 @@ WSGI_APPLICATION = 'modernrpc_demo.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL', 'sqlite:///db.sqlite')
+    'default': env.db('DATABASE_URL', 'sqlite:///db.sqlite3')
 }
 
 
