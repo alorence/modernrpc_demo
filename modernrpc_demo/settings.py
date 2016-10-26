@@ -10,17 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
-import os
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+import environ
+root = environ.Path(__file__) - 1
+env = environ.Env(DEBUG=(bool, False),)
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'z$9^t*0@kom(yl3#w2f__4kcpm@-1dfpkjcsx3+*-qmk7yd*4h'
+SECRET_KEY = env('SECRET_KEY', 'dummy_local_secret_key_xyz')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -75,10 +74,7 @@ WSGI_APPLICATION = 'modernrpc_demo.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': env.db('DATABASE_URL', 'sqlite:///db.sqlite')
 }
 
 
