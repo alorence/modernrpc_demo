@@ -1,0 +1,8 @@
+{
+  "name": "django-modern-rpc demo app",
+  "description": "Demo application",
+  "image": "heroku/python",
+  "repository": "https://github.com/alorence/modernrpc_demo",
+  "keywords": ["python", "django" ],
+  "addons": [ ]
+}
