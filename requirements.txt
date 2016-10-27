@@ -1,4 +1,5 @@
 Django==1.10
 django-environ==0.4.0
+django-modern-rpc==0.3.2
 psycopg2
 gunicorn
