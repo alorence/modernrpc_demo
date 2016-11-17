@@ -120,6 +120,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MODERNRPC_ENTRY_POINTS_MODULES = [
+MODERNRPC_METHODS_MODULES = [
     'main_app.rpc_methods',
 ]
