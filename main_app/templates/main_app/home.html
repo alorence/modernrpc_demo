@@ -32,9 +32,14 @@
 
         <p>
             You can try the library right now. Simply make RPC calls using your preferred client to the address
-            <code>{{ request.build_absolute_uri }}rpc</code>. If you open the same address in your browser, you will get
+            <code>{{ request.build_absolute_uri }}rpc</code>
+        </p>
+
+        {% include 'modernrpc/doc_accordion_method_list.html' %}
+
+        <p>Note: you can also get this list of all method on
             <a href="{{ request.build_absolute_uri }}rpc" title="RPC methods documentation">
-                a list of all RPC methods available and the attached documentation
+                dedicated page
             </a>.
         </p>
 
