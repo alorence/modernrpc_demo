@@ -11,8 +11,13 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import environ
+
+# Configure the project's root
 root = environ.Path(__file__, '../..')
+
+# Configure some default for environment
 env = environ.Env(DEBUG=(bool, False),)
+# Try to load
 environ.Env.read_env(root('.env'))
 
 # Quick-start development settings - unsuitable for production
