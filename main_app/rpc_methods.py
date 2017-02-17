@@ -1,4 +1,5 @@
 from modernrpc.core import rpc_method
+from modernrpc.core import REQUEST_KEY, ENTRY_POINT_KEY, PROTOCOL_KEY, HANDLER_KEY
 
 
 @rpc_method(name="math.add")
@@ -26,3 +27,15 @@ def divide(dividend, divisor):
     :return: Result of the division
     """
     return dividend / divisor
+
+
+@rpc_method(name="util.printContentType")
+def content_type_printer(**kwargs):
+    # The other available variables are:
+    # protocol = kwargs.get(MODERNRPC_PROTOCOL_PARAM_NAME)
+    # entry_point = kwargs.get(MODERNRPC_ENTRY_POINT_PARAM_NAME)
+
+    # Get the current request
+    request = kwargs.get(REQUEST_KEY)
+    # Return the content-type of the current request
+    return request.META.get('Content-Type', '')
