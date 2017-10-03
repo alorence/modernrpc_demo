@@ -147,3 +147,6 @@ STATIC_URL = '/static/'
 MODERNRPC_METHODS_MODULES = [
     'main_app.rpc_methods',
 ]
+
+# Force HTTPS on production:
+SECURE_SSL_REDIRECT = not DEBUG
