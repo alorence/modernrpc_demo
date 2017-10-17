@@ -34,6 +34,10 @@ ALLOWED_HOSTS = [
     'localhost', '127.0.0.1', '[::1]',
 ]
 
+INTERNAL_IPS = [
+    '127.0.0.1',
+    'localhost',
+]
 
 # Application definition
 
@@ -154,6 +158,5 @@ SECURE_SSL_REDIRECT = False # not DEBUG
 
 # Django-analytical
 GOOGLE_ANALYTICS_PROPERTY_ID=env.str('GOOGLE_ANALYTICS_PROPERTY_ID', default='')
-
 GOOGLE_ANALYTICS_SITE_SPEED = True
 GOOGLE_ANALYTICS_ANONYMIZE_IP = True
