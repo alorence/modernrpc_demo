@@ -152,8 +152,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
+STATIC_ROOT = root('/static/')
 
+# Whitenoise static file compression
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+# Django-modern-rpc
 MODERNRPC_METHODS_MODULES = [
     'main_app.rpc_methods',
 ]
