@@ -1,4 +1,5 @@
 Django==1.11.6
+django-analytical==2.2.2
 django-environ==0.4.4
 django-modern-rpc==0.9.0
 psycopg2

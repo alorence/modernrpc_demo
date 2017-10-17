@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'modernrpc',
+    'analytical',
 
     'main_app',
 ]
@@ -150,3 +151,9 @@ MODERNRPC_METHODS_MODULES = [
 
 # Force HTTPS on production:
 SECURE_SSL_REDIRECT = False # not DEBUG
+
+# Django-analytical
+GOOGLE_ANALYTICS_PROPERTY_ID=env.str('GOOGLE_ANALYTICS_PROPERTY_ID', default='')
+
+GOOGLE_ANALYTICS_SITE_SPEED = True
+GOOGLE_ANALYTICS_ANONYMIZE_IP = True
