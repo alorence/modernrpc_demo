@@ -2,7 +2,7 @@
 from django.conf.urls import url, include
 from modernrpc.views import RPCEntryPoint
 
-from main_app.views import HomePageView
+from main.views import HomePageView
 
 app_name = 'main'
 

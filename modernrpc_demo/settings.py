@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'modernrpc',
     'analytical',
 
-    'main_app',
+    'main',
 ]
 
 MIDDLEWARE = [
@@ -138,13 +138,9 @@ LOGGING = {
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -160,7 +156,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Django-modern-rpc
 MODERNRPC_METHODS_MODULES = [
-    'main_app.rpc_methods',
+    'main.rpc_methods',
 ]
 
 # Force HTTPS on production:
