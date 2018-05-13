@@ -1,7 +1,7 @@
-Django==2.0.4
+Django==2.0.5
 django-analytical==2.4.0
 django-environ==0.4.4
-django-modern-rpc==0.11.0
+django-modern-rpc==0.11.1
 psycopg2
 gunicorn
 whitenoise==3.3.1
