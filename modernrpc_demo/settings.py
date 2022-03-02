@@ -57,7 +57,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
-    # 'django.middleware.security.SecurityMiddleware',
+    # Immediately after SecurityMiddleware
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -160,9 +160,9 @@ MODERNRPC_METHODS_MODULES = [
 ]
 
 # Force HTTPS on production:
-SECURE_SSL_REDIRECT = False # not DEBUG
+SECURE_SSL_REDIRECT = False  # not DEBUG
 
 # Django-analytical
-GOOGLE_ANALYTICS_PROPERTY_ID=env.str('GOOGLE_ANALYTICS_PROPERTY_ID', default='')
+GOOGLE_ANALYTICS_JS_PROPERTY_ID=env.str('GOOGLE_ANALYTICS_PROPERTY_ID', default="")
 GOOGLE_ANALYTICS_SITE_SPEED = True
 GOOGLE_ANALYTICS_ANONYMIZE_IP = True
