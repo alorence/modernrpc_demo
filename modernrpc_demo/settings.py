@@ -156,7 +156,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Django-modern-rpc
 MODERNRPC_METHODS_MODULES = [
-    'main.rpc_methods',
+    'main.rpc.math',
+    'main.rpc.meta',
+    'main.rpc.errors',
 ]
 
 # Force HTTPS on production:
