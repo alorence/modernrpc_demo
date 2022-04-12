@@ -162,6 +162,7 @@ MODERNRPC_METHODS_MODULES = [
     'main.rpc.meta',
     'main.rpc.errors',
 ]
+MODERNRPC_LOG_EXCEPTIONS = env.bool("MODERNRPC_LOG_EXCEPTIONS", default=True)
 
 # Force HTTPS on production:
 SECURE_SSL_REDIRECT = False  # not DEBUG
