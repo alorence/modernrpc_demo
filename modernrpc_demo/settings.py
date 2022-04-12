@@ -115,24 +115,26 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
+ENABLE_DEBUG_LOGS = env.bool("ENABLE_DEBUG_LOGS", default=False)
+if ENABLE_DEBUG_LOGS:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'console': {
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler',
+            },
         },
-    },
-    'loggers': {
-        # your other loggers configuration
-        'modernrpc': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
+        'loggers': {
+            # your other loggers configuration
+            'modernrpc': {
+                'handlers': ['console'],
+                'level': 'DEBUG',
+                'propagate': True,
+            },
+        }
     }
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
