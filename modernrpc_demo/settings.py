@@ -30,7 +30,6 @@ SECRET_KEY = env('SECRET_KEY', default='dummy_local_secret_key_xyz')
 DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = [
-    'modernrpc.herokuapp.com',
     'modernrpc.onrender.com',
     'localhost', '127.0.0.1', '[::1]',
 ]
