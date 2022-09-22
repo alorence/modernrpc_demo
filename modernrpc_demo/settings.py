@@ -31,6 +31,7 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = [
     'modernrpc.herokuapp.com',
+    'modernrpc.onrender.com',
     'localhost', '127.0.0.1', '[::1]',
 ]
 
