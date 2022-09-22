@@ -1,4 +1,4 @@
-import modernrpc
+import pkg_resources
 from django.views.generic.base import TemplateView
 from modernrpc.core import registry
 
