@@ -28,13 +28,9 @@
 
             {{ method.html_doc | safe | urlize }}
 
-            {% if method.is_args_doc_available %}
+            {% if method.args_doc %}
 
-            <div class="col-md-2">
-                <p><strong>Parameters:</strong></p>
-            </div>
-
-            <div class="col-md-10">
+                <h6>Parameters:</h6>
                 <ul>
                     {% for name, param_help in method.args_doc.items %}
                     <li>
@@ -46,18 +42,13 @@
                     </li>
                     {% endfor %}
                 </ul>
-            </div>
 
             {% endif %}
 
-            {% if method.is_return_doc_available %}
+            {% if method.return_doc.type or method.return_doc.text %}
 
-            <div class="col-md-2">
-                <p><strong>Returns:</strong></p>
-            </div>
-
-            <div class="col-md-10">
-                <ul class="">
+                <h6>Returns:</h6>
+                <ul>
                     <li>
                     {% if method.return_doc.type %}
                         {{ method.return_doc.type }} -
@@ -65,11 +56,9 @@
                     {{ method.return_doc.text }}
                     </li>
                 </ul>
-            </div>
-            {% endif %}
 
-            {% if not method.is_any_doc_available %}
-                <p><em>No documentation available yet</em></p>
+            {% else %}
+                <em>No documentation on return types available yet</em>
             {% endif %}
         </div>
     </div>
