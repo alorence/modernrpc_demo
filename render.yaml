@@ -15,7 +15,7 @@ services:
 
   envVars:
   - key: PYTHON_VERSION
-    sync: 3.12.7
+    value: 3.12.7
   - key: POETRY_VERSION
     value: 1.8.4
   - key: MODERNRPC_LOG_EXCEPTIONS
