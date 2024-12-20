@@ -1,0 +1,31 @@
+# Exported from Render on 2024-12-20T08:56:29Z
+version: "1"
+
+services:
+- type: web
+  name: modernrpc
+  runtime: python
+  repo: https://github.com/alorence/modernrpc_demo
+  plan: free
+
+  region: frankfurt
+  buildCommand: poetry install --sync --with prod
+  preDeployCommand: poetry run python manage.py collectstatic && poetry run python manage.py migrate
+  startCommand: gunicorn modernrpc_demo.wsgi:application --log-file -
+
+  envVars:
+  - key: PYTHON_VERSION
+    sync: 3.12.7
+  - key: POETRY_VERSION
+    value: 1.8.4
+  - key: MODERNRPC_LOG_EXCEPTIONS
+    value: True
+  - key: ENABLE_DEBUG_LOGS
+    value: False
+
+  - key: GTAG_PROPERTY_ID
+    sync: false
+  - key: SECRET_KEY
+    sync: false
+  - key: GOOGLE_ANALYTICS_PROPERTY_ID
+    sync: false
