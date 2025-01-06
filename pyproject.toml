@@ -15,7 +15,9 @@ django-environ = "^0.11.0"
 psycopg = "^3.2.0"
 whitenoise = "^6.2.0"
 
-django-modern-rpc = "^1.0.3"
+django-modern-rpc = "^1.1.0"
+# Use this instead while developing
+#django-modern-rpc = { path = "../django-modern-rpc/", develop = true }
 
 
 [tool.poetry.group.prod]
