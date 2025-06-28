@@ -35,6 +35,19 @@ wheels = [
 ]
 
 [[package]]
+name = "django-browser-reload"
+version = "1.18.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "asgiref" },
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/3b/41/84eaa4f2b7f764e56e01c4ee49aa12bdea30ae50fd0d3ef7c2690b0c4ec2/django_browser_reload-1.18.0.tar.gz", hash = "sha256:c5f0b134723cbf2a0dc9ae1ee1d38e42db28fe23c74cdee613ba3ef286d04735", size = 14319, upload-time = "2025-02-06T22:14:40.799Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e4/9d/1322dc4bce4982d1eadd3a62802c996ae0303aad13d9ad88c1d35025f73d/django_browser_reload-1.18.0-py3-none-any.whl", hash = "sha256:ed4cc2fb83c3bf6c30b54107a1a6736c0b896e62e4eba666d81005b9f2ecf6f8", size = 12230, upload-time = "2025-02-06T22:14:36.87Z" },
+]
+
+[[package]]
 name = "django-environ"
 version = "0.12.0"
 source = { registry = "https://pypi.org/simple" }
@@ -50,6 +63,18 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/69/99/8d27a9b0bd09181141127bcaddbaab4aa7daf23b7c8f7eba3337eeeb0480/django_modern_rpc-1.1.0.tar.gz", hash = "sha256:f8b0487e40717bd96f7d922a3c8da5152b214d904bd4da66096040813a32267b", size = 25532, upload-time = "2025-01-01T13:15:06.931Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/48/45/c6ad649fac7690e8cbd4ee61b41c36849e89138459b33067154f4f686a80/django_modern_rpc-1.1.0-py3-none-any.whl", hash = "sha256:01cd7a3b166814928c9a373436397332bc83b27549d732c93da30f1968e65e4e", size = 33091, upload-time = "2025-01-01T13:15:05.873Z" },
+]
+
+[[package]]
+name = "django-tailwind"
+version = "4.0.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/e5/14/33694e3e5ac431991b7ea2eefe8d2460a7e555f2d6e6a4b4780e718c54d9/django_tailwind-4.0.1.tar.gz", hash = "sha256:e1f411246208056e8903f304f80a548eac2e5a3c4b6c4adb14eff21ac2dfdd6d", size = 9911, upload-time = "2025-04-02T20:04:04.068Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/cd/8f/7a651007ab9bf552221ae8adc9305c7d21113a9814eb38153b5fdb4ef5eb/django_tailwind-4.0.1-py3-none-any.whl", hash = "sha256:33e5dd5aadd5aa6facf4bddab9144a40cb501e486d4970b93e2853dbdbef4f67", size = 16714, upload-time = "2025-04-02T20:04:03.038Z" },
 ]
 
 [[package]]
@@ -73,11 +98,15 @@ dependencies = [
     { name = "django-analytical" },
     { name = "django-environ" },
     { name = "django-modern-rpc" },
+    { name = "django-tailwind" },
     { name = "psycopg" },
     { name = "whitenoise" },
 ]
 
 [package.dev-dependencies]
+dev = [
+    { name = "django-browser-reload" },
+]
 prod = [
     { name = "gunicorn" },
 ]
@@ -88,11 +117,13 @@ requires-dist = [
     { name = "django-analytical", specifier = ">=3.1.0" },
     { name = "django-environ", specifier = ">=0.11.0" },
     { name = "django-modern-rpc", specifier = ">=1.1.0" },
+    { name = "django-tailwind", specifier = ">=3.8.0" },
     { name = "psycopg", specifier = ">=3.2.0" },
     { name = "whitenoise", specifier = ">=6.2.0" },
 ]
 
 [package.metadata.requires-dev]
+dev = [{ name = "django-browser-reload", specifier = ">=1.12.1" }]
 prod = [{ name = "gunicorn", specifier = ">=23.0.0" }]
 
 [[package]]

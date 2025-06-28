@@ -50,9 +50,17 @@ INSTALLED_APPS = [
 
     'modernrpc',
     'analytical',
+    'tailwind',
+    'theme',
 
     'main',
 ]
+
+if DEBUG:
+    INSTALLED_APPS.append('django_browser_reload')
+
+TAILWIND_APP_NAME = 'theme'
+NPM_BIN_PATH = 'npm'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,6 +75,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if DEBUG:
+    MIDDLEWARE.append('django_browser_reload.middleware.BrowserReloadMiddleware')
 
 ROOT_URLCONF = 'modernrpc_demo.urls'
 

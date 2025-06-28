@@ -1,5 +1,6 @@
 import importlib.metadata
 
+from django.conf import settings
 from django.views.generic.base import TemplateView
 
 from modernrpc.core import registry
@@ -13,5 +14,6 @@ class HomePageView(TemplateView):
         ctx.update({
             "modernrpc_version": importlib.metadata.metadata("django-modern-rpc")["Version"],
             "methods": registry.get_all_methods(sort_methods=True),
+            "debug": settings.DEBUG,
         })
         return ctx
