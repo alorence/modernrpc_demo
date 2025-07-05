@@ -1,31 +1,32 @@
-[tool.poetry]
+[project]
 name = "modernrpc-demo"
 version = "1.0.0"
-description = ""
-authors = ["Antoine Lorence <alorence@flokod.com>"]
-license = "MIT"
+description = "Demo website for django-modern-rpc"
 readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django>=4.2.22",
+    "django-analytical>=3.1.0",
+    "django-environ>=0.11.0",
+    "django-modern-rpc>=2.0dev0",
+    "psycopg>=3.2.0",
+    "sentry-sdk[django]>=2.32.0",
+    "whitenoise>=6.2.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
+[dependency-groups]
+dev = [
+    "ruff>=0.12.2",
+]
+prod = [
+    "gunicorn>=23.0.0",
+]
 
-django = "^4.2.22"
-django-analytical = "^3.1.0"
-django-environ = "^0.11.0"
-psycopg = "^3.2.0"
-whitenoise = "^6.2.0"
+[[tool.uv.index]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+explicit = true
 
-django-modern-rpc = "^1.1.0"
-# Use this instead while developing
-#django-modern-rpc = { path = "../django-modern-rpc/", develop = true }
-
-
-[tool.poetry.group.prod]
-optional = true
-
-[tool.poetry.group.prod.dependencies]
-gunicorn = "^23.0.0"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.uv.sources]
+# Uncomment this while working with packages uploaded only to testpypi
+django-modern-rpc = { index = "testpypi" }
