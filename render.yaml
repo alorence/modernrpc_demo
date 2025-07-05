@@ -10,8 +10,7 @@ services:
 
   region: frankfurt
   buildCommand: uv sync --group prod
-  preDeployCommand: uv run python manage.py collectstatic && uv run python manage.py migrate
-  startCommand: gunicorn modernrpc_demo.wsgi:application --log-file -
+  startCommand: uv run python manage.py collectstatic && uv run python manage.py migrate && gunicorn modernrpc_demo.wsgi:application --log-file -
 
   envVars:
   - key: PYTHON_VERSION
