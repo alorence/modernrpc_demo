@@ -17,7 +17,9 @@ import sentry_sdk
 root = environ.Path(__file__, "../..")
 
 # Configure some default for environment
-env = environ.Env(DEBUG=(bool, False),)
+env = environ.Env(
+    DEBUG=(bool, False),
+)
 # Try to load
 environ.Env.read_env(root(".env"))
 
@@ -32,7 +34,9 @@ DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = [
     "modernrpc.onrender.com",
-    "localhost", "127.0.0.1", "[::1]",
+    "localhost",
+    "127.0.0.1",
+    "[::1]",
 ]
 
 INTERNAL_IPS = [
@@ -48,19 +52,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "modernrpc",
     "analytical",
-
     "main",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-
     # Immediately after SecurityMiddleware
     "whitenoise.middleware.WhiteNoiseMiddleware",
-
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -93,9 +93,7 @@ WSGI_APPLICATION = "modernrpc_demo.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    "default": env.db("DATABASE_URL", "sqlite:///db.sqlite3")
-}
+DATABASES = {"default": env.db("DATABASE_URL", "sqlite:///db.sqlite3")}
 
 
 # Password validation
@@ -134,7 +132,7 @@ if ENABLE_DEBUG_LOGS:
                 "level": "DEBUG",
                 "propagate": True,
             },
-        }
+        },
     }
 
 # Internationalization

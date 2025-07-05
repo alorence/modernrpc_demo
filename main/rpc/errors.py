@@ -5,6 +5,7 @@ from modernrpc.exceptions import RPCException, RPC_CUSTOM_ERROR_BASE
 
 errors = RpcNamespace()
 
+
 @errors.register_procedure(name="errors.custom")
 def custom_error():
     """Simply raises a custom exception"""

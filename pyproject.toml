@@ -15,6 +15,9 @@ dependencies = [
 ]
 
 [dependency-groups]
+dev = [
+    "ruff>=0.12.2",
+]
 prod = [
     "gunicorn>=23.0.0",
 ]

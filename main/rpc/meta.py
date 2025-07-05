@@ -17,4 +17,4 @@ def content_type_printer(_ctx: RpcRequestContext):
     # Get the current request
     request = _ctx.request
     # Return the content-type of the current request
-    return request.META.get('Content-Type', '')
+    return request.META.get("Content-Type", "")

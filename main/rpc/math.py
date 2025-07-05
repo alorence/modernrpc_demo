@@ -2,6 +2,7 @@ from modernrpc import RpcNamespace
 
 math = RpcNamespace()
 
+
 @math.register_procedure(name="math.add")
 def add(termA, termB):
     """
