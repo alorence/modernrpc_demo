@@ -122,7 +122,7 @@ if ENABLE_DEBUG_LOGS:
         'disable_existing_loggers': False,
         'handlers': {
             'console': {
-                'level': 'INFO',
+                'level': 'DEBUG',
                 'class': 'logging.StreamHandler',
             },
         },
@@ -154,15 +154,6 @@ STATIC_ROOT = root('static')
 
 # Whitenoise static file compression
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
-# Django-modern-rpc
-MODERNRPC_METHODS_MODULES = [
-    'main.rpc.math',
-    'main.rpc.meta',
-    'main.rpc.errors',
-]
-MODERNRPC_LOG_EXCEPTIONS = env.bool("MODERNRPC_LOG_EXCEPTIONS", default=True)
 
 # Force HTTPS on production:
 SECURE_SSL_REDIRECT = False  # not DEBUG

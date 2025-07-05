@@ -1,7 +1,8 @@
-from modernrpc.core import rpc_method
+from modernrpc import RpcNamespace
 
+math = RpcNamespace()
 
-@rpc_method(name="math.add")
+@math.register_procedure(name="math.add")
 def add(termA, termB):
     """
     Add termA and termB, end return the result
@@ -16,7 +17,7 @@ def add(termA, termB):
     return termA + termB
 
 
-@rpc_method(name="math.divide")
+@math.register_procedure(name="math.divide")
 def divide(dividend, divisor):
     """
     Divide the dividend by the divisor
