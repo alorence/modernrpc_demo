@@ -2,7 +2,7 @@ import importlib.metadata
 
 from django.views.generic.base import TemplateView
 
-from modernrpc.core import registry
+from main.rpc.server import server
 
 
 class HomePageView(TemplateView):
@@ -12,6 +12,6 @@ class HomePageView(TemplateView):
         ctx = super(HomePageView, self).get_context_data(**kwargs)
         ctx.update({
             "modernrpc_version": importlib.metadata.metadata("django-modern-rpc")["Version"],
-            "methods": registry.get_all_methods(sort_methods=True),
+            "methods": server.procedures,
         })
         return ctx

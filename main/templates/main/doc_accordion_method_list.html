@@ -1,7 +1,7 @@
 
 <div id="accordion" role="tablist" aria-multiselectable="true">
 
-    {% for method in methods %}
+    {% for method in methods.values %}
         {% include 'main/doc_accordion_method.html' %}
     {% endfor %}
 
