@@ -13,6 +13,8 @@
 
   <script src="{% static 'app.js' %}"></script>
   <script src="{% static 'accordion.js' %}"></script>
+  {# Inject Sentry Loader script if enabled in project's settings #}
+  {{ sentry_loader_script }}
 
   {% analytical_head_bottom %}
 </head>

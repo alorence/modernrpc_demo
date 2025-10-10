@@ -17,6 +17,7 @@ import sentry_sdk
 from pathlib import Path
 
 from django.utils.module_loading import import_string
+from django.utils.safestring import SafeString
 
 
 # Configure some default for environment
@@ -92,6 +93,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "core.context_processors.main",
             ],
         },
     },
@@ -185,6 +187,7 @@ GOOGLE_ANALYTICS_GTAG_PROPERTY_ID = env.str("GTAG_PROPERTY_ID", default="")
 
 # Sentry
 if SENTRY_DSN := env("SENTRY_DSN", default=""):
+    SENTRY_LOADER_SCRIPT = SafeString('<script src="https://js.sentry-cdn.com/cededa21882d1a8611531771f9d4ab0c.min.js" crossorigin="anonymous"></script>')
     sentry_sdk.init(
         dsn=SENTRY_DSN,
         # Add data like request headers and IP for users,
@@ -199,6 +202,8 @@ if SENTRY_DSN := env("SENTRY_DSN", default=""):
         # Set profile_lifecycle to "trace" to automatically
         # run the profiler on when there is an active transaction
         profile_lifecycle="trace",
+        # Enable logs to be sent to Sentry
+        enable_logs=True,
     )
 
 
