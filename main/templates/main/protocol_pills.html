@@ -1,0 +1,8 @@
+<div class="flex grow justify-end gap-2">
+  {% if method.is_available_in_xml_rpc %}
+    <span class="badge badge-xs">XML-RPC</span>
+  {% endif %}
+  {% if method.is_available_in_json_rpc %}
+    <span class="badge badge-xs">JSON-RPC</span>
+  {% endif %}
+</div> <!-- /protocol-badges -->
