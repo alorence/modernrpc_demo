@@ -1,7 +1,7 @@
 # syntax=docker.io/docker/dockerfile:1.7-labs
-ARG PYTHON_VERSION=3.13-alpine
+ARG PYTHON_VERSION=3.14-alpine
 ARG NODE_VERSION=24-alpine
-ARG UV_VERSION=0.8.23
+ARG UV_VERSION=0.9.1
 
 ARG DEFAULT_LISTEN_PORT=8099
 ARG BUILD_DIR=/build
@@ -55,13 +55,12 @@ FROM python-base
 ARG PROJECT_DIR
 ARG DEFAULT_LISTEN_PORT
 
-# Must be consistent with settings.STATIC_ROOT
-# TODO: load this from env var
-ENV DJANGO_STATIC_ROOT=${PROJECT_DIR}/static
 # gunicorn config: https://docs.gunicorn.org/en/stable/settings.html#bind
 # If the PORT environment variable is defined, the default is ['0.0.0.0:$PORT']. Default is ['127.0.0.1:8000'].
 ENV PORT=$DEFAULT_LISTEN_PORT
 
+# Extract currently configured STATIC_ROOT from Django settings and store it in DJANGO_STATIC_ROOT envvar
+RUN export DJANGO_STATIC_ROOT=$(python manage.py shell -c 'from django.conf import *; print(settings.STATIC_ROOT)')
 COPY --from=collectstatic ${DJANGO_STATIC_ROOT} ${DJANGO_STATIC_ROOT}
 
 EXPOSE 8000
