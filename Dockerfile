@@ -56,4 +56,6 @@ COPY --parents core/ main/ manage.py ${PROJECT_DIR}
 RUN --mount=from=frontend,source=${BUILD_DIR}/dist,target=dist \
      python manage.py collectstatic --no-input
 
+USER nobody
+
 CMD ["gunicorn", "-k", "core.asgi.DjangoUvicornWorker", "-w", "4", "core.asgi:application"]
