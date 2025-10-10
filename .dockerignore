@@ -1,4 +1,10 @@
-fly.toml
-.git/
 *.sqlite3
+*.md
+.editorconfig
+.env
+.git/
+.github/
 .venv
+dist/
+fly.toml
+node_modules/
