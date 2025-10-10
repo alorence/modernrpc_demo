@@ -1,0 +1,25 @@
+{
+  "name": "dmr-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devserver": "uv run honcho start",
+    "css-dev": "tailwindcss -i ./www/index.css -o ./dist/app.css --watch",
+    "js-dev": "rollup -c --watch",
+    "build:prod": "rollup -c && tailwindcss --minify -i ./www/index.css -o ./dist/app.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Proprietary",
+  "packageManager": "pnpm@10.12.1",
+  "dependencies": {
+    "@iconify-json/tabler": "^1.2.23",
+    "@iconify/tailwind4": "^1.0.6",
+    "@tailwindcss/cli": "^4.1.14",
+    "flyonui": "^2.4.1",
+    "rollup": "^4.52.4",
+    "rollup-plugin-copy": "^3.5.0",
+    "tailwindcss": "^4.1.14"
+  }
+}

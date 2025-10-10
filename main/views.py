@@ -15,7 +15,7 @@ class HomePageView(TemplateView):
                 "modernrpc_version": importlib.metadata.metadata("django-modern-rpc")[
                     "Version"
                 ],
-                "methods": server.procedures,
+                "methods": server.procedures.values,
             }
         )
         return ctx
