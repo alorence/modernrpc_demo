@@ -4,18 +4,18 @@ math = RpcNamespace()
 
 
 @math.register_procedure(name="math.add")
-def add(termA, termB):
+def add(term_a, term_b):
     """
     Add termA and termB, end return the result
 
-    :param termA: First term
-    :param termB: Second term
-    :type termA: int, float
-    :type termB: int, float
+    :param term_a: First term
+    :param term_b: Second term
+    :type term_a: int, float
+    :type term_b: int, float
     :return: Sum of the two terms
     :rtype: int, float
     """
-    return termA + termB
+    return term_a + term_b
 
 
 @math.register_procedure(name="math.divide")
