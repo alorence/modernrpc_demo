@@ -3,23 +3,30 @@ name = "modernrpc-demo"
 version = "1.0.0"
 description = "Demo website for django-modern-rpc"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 dependencies = [
-    "django>=4.2.22",
+    "django>=5.2.4",
     "django-analytical>=3.1.0",
     "django-environ>=0.11.0",
-    "django-modern-rpc>=2.0dev0",
+    "django-modern-rpc>=2.0.0-dev.2",
     "psycopg>=3.2.0",
     "sentry-sdk[django]>=2.32.0",
     "whitenoise>=6.2.0",
 ]
+[tool.uv]
+default-groups = ["dev"]
+
 
 [dependency-groups]
 dev = [
-    "ruff>=0.12.2",
+    "django-browser-reload>=1.21.0",
+    "django-watchfiles>=1.4.0",
+    "honcho>=2.0.0",
+    "ruff>=0.13.2",
 ]
 prod = [
     "gunicorn>=23.0.0",
+    "sentry-sdk[django]>=2.33.2",
 ]
 
 [[tool.uv.index]]
@@ -29,4 +36,7 @@ explicit = true
 
 [tool.uv.sources]
 # Uncomment this while working with packages uploaded only to testpypi
-django-modern-rpc = { index = "testpypi" }
+# django-modern-rpc = { index = "testpypi" }
+
+# Uncomment this while working with local build (editable mode)
+#django-modern-rpc = { path = "../modernrpc", editable = true }
