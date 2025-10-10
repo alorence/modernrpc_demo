@@ -63,4 +63,4 @@ COPY --from=collectstatic ${DJANGO_STATIC_ROOT} ${DJANGO_STATIC_ROOT}
 
 EXPOSE 8000
 
-CMD ["gunicorn", "core.asgi:application"]
+CMD ["gunicorn", "-k", "uvicorn_worker.UvicornWorker", "core.asgi:application"]
