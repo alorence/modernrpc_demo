@@ -11,7 +11,8 @@ export default {
         {
           dest: 'dist/',
           src: [
-            'node_modules/flyonui/dist/accordion.js'
+            // 'node_modules/flyonui/dist/accordion.js',
+            'node_modules/flyonui/dist/tabs.js'
           ]
         }
       ]

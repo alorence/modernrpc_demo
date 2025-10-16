@@ -9,6 +9,7 @@ dependencies = [
     "django-analytical>=3.1.0",
     "django-environ>=0.12.0",
     "django-modern-rpc>=2.0a2",
+    "markdown>=3.9",
     "psycopg>=3.2.0",
     "sentry-sdk[django]>=2.41.0",
     "whitenoise>=6.2.0",
@@ -36,7 +37,7 @@ explicit = true
 
 [tool.uv.sources]
 # Uncomment this while working with packages uploaded only to testpypi
-# django-modern-rpc = { index = "testpypi" }
+#django-modern-rpc = { index = "testpypi" }
 
-# Uncomment this while working with local build (editable mode)
+# Uncomment this while working with a local build (editable mode)
 #django-modern-rpc = { path = "../modernrpc", editable = true }
