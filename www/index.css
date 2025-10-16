@@ -1,7 +1,12 @@
 @import "tailwindcss";
+
 @plugin "@iconify/tailwind4";
 @plugin "flyonui" {
-   themes: all;
+  themes: all;
 }
 
 @import "flyonui/variants.css";
+
+div.procedure-docstring ul {
+  @apply list-inside list-disc ms-4;
+}

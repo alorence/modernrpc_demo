@@ -10,12 +10,11 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super(HomePageView, self).get_context_data(**kwargs)
+        dmr_version = importlib.metadata.metadata("django-modern-rpc")["Version"]
         ctx.update(
             {
-                "modernrpc_version": importlib.metadata.metadata("django-modern-rpc")[
-                    "Version"
-                ],
-                "methods": server.procedures.values,
+                "modernrpc_version": dmr_version,
+                "methods": sorted(server.procedures.values(), key=lambda proc: proc.name),
             }
         )
         return ctx

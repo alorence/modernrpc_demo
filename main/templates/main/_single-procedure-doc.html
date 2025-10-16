@@ -1,0 +1,41 @@
+<div class="flex flex-col gap-2">
+
+  <h4 class="text-accent font-semibold text-xl">{{ method }}</h4>
+
+  <div class="procedure-docstring">
+    {{ method.html_doc | safe | urlize }}
+  </div>
+
+  <h6 class="font-semibold mt-3 mb-2">Parameters:</h6>
+
+  {% if method.args_doc %}
+    <ul class="list-inside list-disc ms-4">
+      {% for name, param_help in method.args_doc.items %}
+        <li>
+          <strong>{{ name }}</strong>
+          {% if param_help.type %}({{ param_help.type }}) - {% endif %}{{ param_help.text }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <em class="text-base-content/60">This procedure has no arguments documentation</em>
+  {% endif %}
+
+
+  <h6 class="font-semibold mt-3 mb-2">Returns:</h6>
+  {% if method.return_doc.type or method.return_doc.text %}
+
+    <ul class="list-inside list-disc ms-4">
+      <li>
+        {% if method.return_doc.type %}
+          {{ method.return_doc.type }} -
+        {% endif %}
+        {{ method.return_doc.text }}
+      </li>
+    </ul>
+
+  {% else %}
+    <em class="text-base-content/60">No documentation on return types available yet</em>
+  {% endif %}
+
+</div>

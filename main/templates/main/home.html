@@ -1,6 +1,5 @@
-{% load static %}
-{% load analytical %}<!DOCTYPE html>
-
+<!DOCTYPE html>
+{% load static analytical %}
 <html lang="en">
 <head>
   {% analytical_head_top %}
@@ -12,19 +11,20 @@
   <link rel="stylesheet" href="{% static 'app.css' %}">
 
   <script src="{% static 'app.js' %}" type="module"></script>
-  <script src="{% static 'accordion.js' %}"></script>
+  <script src="{% static 'tabs.js' %}"></script>
   {# Inject Sentry Loader script if enabled in project's settings #}
   {{ sentry_loader_script }}
 
   {% analytical_head_bottom %}
 </head>
 
-<body class="bg-base-200" data-theme="corporate">
+<body class="bg-base-200 py-12" data-theme="soft">
 {% analytical_body_top %}
 
-<div class="container mx-auto py-14 px-4">
+<div class="container mx-auto flex flex-col gap-8">
 
-  <div class="hero bg-gradient-to-b from-primary/40 to-secondary/30 text-base-content rounded-box mb-10 p-8 shadow-lg">
+  <div
+    class="hero bg-gradient-to-b from-primary/40 to-secondary/30 text-base-content rounded-box p-8 shadow-lg col-span-3">
     <div class="hero-content text-center">
       <div>
         <h1 class="text-4xl font-extrabold mb-4">Django-modern-rpc</h1>
@@ -37,11 +37,16 @@
     </div>
   </div>
 
-  <div class="card bg-base-100 shadow-lg mb-8">
+  <div class="card bg-base-100 shadow-lg">
+    <div class="card-header">
+      <h3 class="card-title text-2xl text-primary">
+        Introduction
+      </h3>
+    </div>
     <div class="card-body">
-      <h2 class="card-title text-3xl font-semibold text-primary">Introduction</h2>
-      <p class="py-2">
-        <a href="https://pypi.python.org/pypi/django-modern-rpc" title="django-modern-rpc on PyPi"
+      <p class="">
+        <a href="https://pypi.python.org/pypi/django-modern-rpc"
+           title="django-modern-rpc on PyPi"
            class="link link-primary link-hover font-medium">Django-modern-rpc</a>
         is a Django library that helps you enable JSON and XML-RPC servers in your application. It is easy to install
         and configure, and highly customizable. This website shows the library in action.
@@ -49,7 +54,7 @@
     </div>
   </div>
 
-  <div class="flex flex-wrap gap-3 justify-center my-8">
+  <div class="flex flex-wrap gap-3 justify-center">
     <a class="btn btn-accent btn-lg shadow-md" href="https://github.com/alorence/django-modern-rpc" target="_blank">
       <span class="icon-[tabler--brand-github] size-5"></span>
       Source code
@@ -65,7 +70,7 @@
     </a>
   </div>
 
-  <div id="library-action" class="card bg-base-100 shadow-lg mb-8">
+  <div id="library-action" class="card shadow-lg">
     <div class="card-body">
       <h2 class="card-title text-3xl font-semibold text-secondary">Library in action</h2>
 
@@ -73,16 +78,33 @@
         <div>
           <span class="icon-[tabler--info-circle] size-6"></span>
           <div>
-            <p>You can try the library right now. Simply make RPC calls using your preferred client to the address:</p>
+            <p>You can try the library right now. Simply make RPC calls using your preferred client to the
+              address:</p>
             <code class="block bg-base-200 text-base-content p-3 px-4 rounded-md mt-2 font-mono"
             >{{ request.build_absolute_uri }}rpc</code>
           </div>
         </div>
       </div>
 
-      {% include 'main/methods_doc.html' %}
     </div>
   </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title text-3xl font-semibold text-secondary">Remote procedures</h5>
+    </div>
+    <div class="card-body">
+
+      <p class="mb-4">
+        Here is the full list of procedures exposed by this demo application. You can read documentation for each one
+        and copy/paste the command to test it by yourself.
+      </p>
+
+      {% include "main/_all-procedures-doc.html" %}
+
+    </div>
+  </div>
+
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
     <div

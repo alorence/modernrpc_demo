@@ -179,6 +179,8 @@ STORAGES = {
 # Force HTTPS on production:
 SECURE_SSL_REDIRECT = False  # not DEBUG
 
+MODERNRPC_DOC_FORMAT = "md"
+
 # Django-analytical
 GOOGLE_ANALYTICS_SITE_SPEED = True
 GOOGLE_ANALYTICS_ANONYMIZE_IP = True
