@@ -1,21 +1,9 @@
-import copy from 'rollup-plugin-copy'
+import nodeResolve from "@rollup/plugin-node-resolve";
 
 export default {
   input: 'www/index.js',
   output: {
     file: 'dist/app.js',
   },
-  plugins: [
-    copy({
-      targets: [
-        {
-          dest: 'dist/',
-          src: [
-            // 'node_modules/flyonui/dist/accordion.js',
-            'node_modules/flyonui/dist/tabs.js'
-          ]
-        }
-      ]
-    })
-  ]
+  plugins: [nodeResolve()]
 }

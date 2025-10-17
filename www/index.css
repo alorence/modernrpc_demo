@@ -5,8 +5,16 @@
   themes: all;
 }
 
+/**
+  Setup FlyonUI JS related styles
+ */
 @import "flyonui/variants.css";
+/* this requirement does not seem to be required for the tabs to work*/
+/*@source "../node_modules/flyonui/dist/tabs.js";*/
 
+/**
+  Custom styles
+ */
 div.procedure-docstring ul {
   @apply list-inside list-disc ms-4;
 }
