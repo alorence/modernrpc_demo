@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devserver": "uv run honcho start",
-    "css-dev": "tailwindcss -i ./www/index.css -o ./dist/app.css --watch",
-    "js-dev": "rollup -c --watch",
+    "dev:css": "tailwindcss --watch -i ./www/index.css -o ./dist/app.css",
+    "dev:js": "rollup -c --watch",
+    "dev:all": "uvx honcho start",
     "build:prod": "rollup -c && tailwindcss --minify -i ./www/index.css -o ./dist/app.css"
   },
   "keywords": [],
