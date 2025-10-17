@@ -10,7 +10,7 @@
  */
 @import "flyonui/variants.css";
 /* this requirement does not seem to be required for the tabs to work*/
-/*@source "../node_modules/flyonui/dist/tabs.js";*/
+/* @source "../node_modules/flyonui/dist/tabs.js"; */
 
 /**
   Custom styles
