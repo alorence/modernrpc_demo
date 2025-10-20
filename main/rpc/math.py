@@ -4,14 +4,12 @@ math = RpcNamespace()
 
 
 @math.register_procedure(name="math.add")
-def add(term_a, term_b):
+def add(term_a: int | float, term_b: int | float) -> int | float:
     """
     Add termA and termB, end return the result
 
     :param term_a: First term
     :param term_b: Second term
-    :type term_a: int, float
-    :type term_b: int, float
     :return: Sum of the two terms
     :rtype: int, float
     """
@@ -19,7 +17,7 @@ def add(term_a, term_b):
 
 
 @math.register_procedure(name="math.divide")
-def divide(dividend, divisor):
+def divide(dividend: int | float, divisor: int | float):
     """
     Divide the dividend by the divisor
 

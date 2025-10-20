@@ -14,7 +14,9 @@ class HomePageView(TemplateView):
         ctx.update(
             {
                 "modernrpc_version": dmr_version,
-                "methods": sorted(server.procedures.values(), key=lambda proc: proc.name),
+                "methods": sorted(
+                    server.procedures.values(), key=lambda proc: proc.name
+                ),
             }
         )
         return ctx
