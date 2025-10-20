@@ -40,34 +40,35 @@
     <em class="text-base-content/60">No documentation on return types available yet</em>
   {% endif %}
 
-  <nav class="tabs w-fit rounded-field bg-base-200/60 p-1" aria-label="Tabs" role="tablist" aria-orientation="horizontal">
+  <div class="mt-8 flex flex-col gap-2">
 
-    <div x-bind:class="{
+    <nav class="tabs w-fit rounded-field bg-base-200/60 p-1"
+         aria-label="Tabs" role="tablist" aria-orientation="horizontal">
+
+      <div x-bind:class="{
           'translate-x-0': preferredProtocol === 'xml-rpc',
           'translate-x-full': preferredProtocol === 'json-rpc'
         }"
-         class="rounded-field bg-base-100 shadow-base-300/20 absolute w-32 h-8 shadow-sm transition-transform duration-300 ease-in-out translate-x-full">
+           class="rounded-field bg-base-100 shadow-base-300/20 absolute w-32 h-8 shadow-sm transition-transform duration-300 ease-in-out translate-x-full">
 
-    </div>
-    <button type="button"
-            class="rounded-field text-base-content text-sm z-1 w-32 h-8 flex items-center justify-center gap-x-2"
-            :class="preferredProtocol == 'xml-rpc' ? 'active' : ''"
-            @click="preferredProtocol = 'xml-rpc'"
-            id="x-trigger-{{ forloop.counter }}" data-tab="#x-example-{{ forloop.counter }}"
-            aria-controls="x-example-{{ forloop.counter }}" role="tab">
-      <span class="icon-[tabler--brackets-angle]"></span> XML-RPC
-    </button>
-    <button type="button"
-            class="rounded-field text-base-content text-sm z-1 w-32 h-8 flex items-center justify-center gap-x-2"
-            :class="preferredProtocol == 'json-rpc' ? 'active' : ''"
-            @click="preferredProtocol = 'json-rpc'"
-            id="j-trigger-{{ forloop.counter }}" data-tab="#j-example-{{ forloop.counter }}"
-            aria-controls="j-example-{{ forloop.counter }}" role="tab">
-      <span class="icon-[tabler--braces]"></span> JSON-RPC
-    </button>
-  </nav>
-
-  <div class="mt-3">
+      </div>
+      <button type="button"
+              class="rounded-field text-base-content text-sm z-1 w-32 h-8 flex items-center justify-center gap-x-2"
+              :class="preferredProtocol == 'xml-rpc' ? 'active' : ''"
+              @click="preferredProtocol = 'xml-rpc'"
+              id="x-trigger-{{ forloop.counter }}" data-tab="#x-example-{{ forloop.counter }}"
+              aria-controls="x-example-{{ forloop.counter }}" role="tab">
+        <span class="icon-[tabler--brackets-angle]"></span> XML-RPC
+      </button>
+      <button type="button"
+              class="rounded-field text-base-content text-sm z-1 w-32 h-8 flex items-center justify-center gap-x-2"
+              :class="preferredProtocol == 'json-rpc' ? 'active' : ''"
+              @click="preferredProtocol = 'json-rpc'"
+              id="j-trigger-{{ forloop.counter }}" data-tab="#j-example-{{ forloop.counter }}"
+              aria-controls="j-example-{{ forloop.counter }}" role="tab">
+        <span class="icon-[tabler--braces]"></span> JSON-RPC
+      </button>
+    </nav>
 
     <div id="x-example-{{ forloop.counter }}" role="tabpanel" aria-labelledby="x-trigger-{{ forloop.counter }}"
          x-show="preferredProtocol == 'xml-rpc'" x-transition.opacity.duration.200ms>
@@ -77,9 +78,10 @@
         <pre id="x-code-{{ forloop.counter }}" class="overflow-x-auto text-sm"
         ><code>{% xml_rpc_example method %}</code></pre>
 
+        {% include "main/_copy-button.html" with target_prefix="x-code" %}
+
       </div>
     </div>
-
     <div id="j-example-{{ forloop.counter }}" role="tabpanel" aria-labelledby="j-trigger-{{ forloop.counter }}"
          x-show="preferredProtocol == 'json-rpc'" x-transition.opacity.duration.200ms>
 
@@ -87,6 +89,8 @@
 
         <pre id="j-code-{{ forloop.counter }}" class="overflow-x-auto text-sm"
         ><code>{% json_rpc_example method %}</code></pre>
+
+        {% include "main/_copy-button.html" with target_prefix="j-code" %}
 
       </div>
     </div>

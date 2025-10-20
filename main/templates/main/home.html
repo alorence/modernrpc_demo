@@ -10,7 +10,10 @@
 
   <link rel="stylesheet" href="{% static 'app.css' %}">
 
-  <script src="{% static 'app.js' %}" type="module"></script>
+  <script src="{% static 'clipboard.js' %}"></script>
+  <script src="{% static 'helper-clipboard.js' %}"></script>
+
+  <script defer src="{% static 'app.js' %}" type="module"></script>
 
   {# Inject Sentry Loader script if enabled in project's settings #}
   {{ sentry_loader_script }}
