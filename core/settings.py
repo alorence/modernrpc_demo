@@ -189,7 +189,9 @@ GOOGLE_ANALYTICS_GTAG_PROPERTY_ID = env.str("GTAG_PROPERTY_ID", default="")
 
 # Sentry
 if SENTRY_DSN := env("SENTRY_DSN", default=""):
-    SENTRY_LOADER_SCRIPT = SafeString('<script src="https://js.sentry-cdn.com/cededa21882d1a8611531771f9d4ab0c.min.js" crossorigin="anonymous"></script>')
+    SENTRY_LOADER_SCRIPT = SafeString(
+        '<script src="https://js.sentry-cdn.com/cededa21882d1a8611531771f9d4ab0c.min.js" crossorigin="anonymous"></script>'
+    )
     sentry_sdk.init(
         dsn=SENTRY_DSN,
         # Add data like request headers and IP for users,

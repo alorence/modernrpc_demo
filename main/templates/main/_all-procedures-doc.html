@@ -1,27 +1,34 @@
-<div class="flex">
-  <nav class="tabs tabs-bordered tabs-vertical" aria-label="Tabs" role="tablist" data-tabs-vertical="true"
-       aria-orientation="horizontal">
+<div class="__outer" x-data="{selected: 1}">
+  <div class="flex">
+    <nav class="tabs tabs-bordered tabs-vertical"
+         aria-label="Tabs"
+         role="tablist"
+         data-tabs-vertical="true"
+         aria-orientation="horizontal">
 
-    {% for method in methods %}
-      <button type="button"
-              class="tab active-tab:tab-active{% if forloop.first %} active{% endif %} ps-1"
-              id="show-doc-{{ forloop.counter }}"
-              data-tab="#doc-{{ forloop.counter }}"
-              aria-controls="tabs-vertical-3" role="tab" aria-selected="false">
-        {{ method.name }}
-      </button>
-    {% endfor %}
+      {% for method in methods %}
+        <button type="button"
+                class="tab active-tab:tab-active{% if forloop.first %} active{% endif %} ps-1 pe-16"
+                id="show-doc-{{ forloop.counter }}"
+                @click="selected = {{ forloop.counter }}"
+                data-tab="#doc-{{ forloop.counter }}"
+                aria-controls="tabs-vertical-3" role="tab" aria-selected="false">
+          {{ method.name }}
+        </button>
+      {% endfor %}
+    </nav>
 
-  </nav>
+    <div class="px-8 grow" x-data="{preferredProtocol: 'xml-rpc'}">
 
-  <div class="px-8">
-
-    {% for method in methods %}
-      <div id="doc-{{ forloop.counter }}"
-           role="tabpanel" aria-labelledby="show-doc-{{ forloop.counter }}"
-           class="{% if not forloop.first %}hidden{% endif %}">
-        {% include "main/_single-procedure-doc.html" %}
-      </div>
-    {% endfor %}
+      {% for method in methods %}
+        <div id="doc-{{ forloop.counter }}"
+             role="tabpanel"
+             aria-labelledby="show-doc-{{ forloop.counter }}"
+             x-show="selected === {{ forloop.counter }}"
+             x-transition.opacity.duration.100ms>
+          {% include "main/_single-procedure-doc.html" %}
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </div>

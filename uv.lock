@@ -113,15 +113,15 @@ wheels = [
 
 [[package]]
 name = "django-modern-rpc"
-version = "2.0a2"
+version = "2.0a3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "defusedxml" },
     { name = "django" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f1/4c/1f6c5617f6cb74aa2f3ea8d75dd8f54a4b9e8d5c7481ad9b359cf61b1ccf/django_modern_rpc-2.0a2.tar.gz", hash = "sha256:5eeb921b147845cd3e7d7846f28431f5db31ebdede98c13b80924dae81f11f01", size = 28893, upload-time = "2025-09-17T19:17:59.351Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/6a/03/84b3b0d447a35a70a3a333accf7b2c73199883fe7dc07ba244c9a043843a/django_modern_rpc-2.0a3.tar.gz", hash = "sha256:47d356a992627d009e5e52b6a315522905551a280a881ba7ce3b093b39f4068c", size = 28865, upload-time = "2025-10-19T16:47:38.259Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/95/a6/e6f8cc477c4794a31a013d757aa97b75a60a15d77d2269098773a8fdea23/django_modern_rpc-2.0a2-py3-none-any.whl", hash = "sha256:d840a2badd1098815007171c3c45adf351d5f8e46ffeea92b911079a3e74e234", size = 42658, upload-time = "2025-09-17T19:17:57.914Z" },
+    { url = "https://files.pythonhosted.org/packages/eb/6c/a230df13ac89c4783f3e39e2ad39647e4c1310ca67bf86ed4635e78aab0f/django_modern_rpc-2.0a3-py3-none-any.whl", hash = "sha256:35ed502ede36f8e319bc23e7a43853fe364318401ff225eb6e4dfee557de65cc", size = 42588, upload-time = "2025-10-19T16:47:36.883Z" },
 ]
 
 [[package]]
@@ -220,7 +220,7 @@ requires-dist = [
     { name = "django", specifier = "~=5.2" },
     { name = "django-analytical", specifier = ">=3.1.0" },
     { name = "django-environ", specifier = ">=0.12.0" },
-    { name = "django-modern-rpc", specifier = ">=2.0a2" },
+    { name = "django-modern-rpc", specifier = ">=2.0a3" },
     { name = "markdown", specifier = ">=3.9" },
     { name = "psycopg", specifier = ">=3.2.0" },
     { name = "sentry-sdk", extras = ["django"], specifier = ">=2.41.0" },

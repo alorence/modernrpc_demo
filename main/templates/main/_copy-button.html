@@ -1,0 +1,16 @@
+<button type="button" class="js-clipboard tooltip absolute end-2 top-2"
+        aria-label="Copy text to clipboard"
+        data-clipboard-target="#{{ target_prefix }}-{{ forloop.counter }}"
+        data-clipboard-action="copy"
+        data-clipboard-success-text="Copied!">
+
+  <span class="tooltip-toggle btn btn-square btn-primary">
+    <span class="js-clipboard-default icon-[tabler--clipboard] size-5 transition"></span>
+    <span class="js-clipboard-success icon-[tabler--clipboard-check] hidden size-5"></span>
+  </span>
+
+  <span class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible" role="tooltip">
+    <span class="tooltip-body js-clipboard-success-text">Copy</span>
+  </span>
+
+</button>
