@@ -6,7 +6,8 @@ from textwrap import dedent, indent
 from types import UnionType
 
 from django import template
-from django.template import RequestContext
+from django.utils.html import escape, format_html
+from django.utils.safestring import mark_safe
 
 from modernrpc.core import ProcedureWrapper
 
@@ -37,36 +38,39 @@ def _build_procedure_params(procedure: ProcedureWrapper):
     ]
 
 
-@register.simple_tag(takes_context=True)
-def xml_rpc_example(context: RequestContext, procedure: ProcedureWrapper):
-    server_url = context.request.build_absolute_uri("/rpc")
-    params = xmlrpc.client.dumps(tuple(_build_procedure_params(procedure))).lstrip()
-    example = f"""
-        curl -X POST '{server_url}' \\
-          --header 'Content-Type: application/xml' \\
-          --data '<?xml version="1.0"?>
-            <methodCall>
-              <methodName>{procedure.name}</methodName>
-              {indent(params, " " * 14).lstrip()}
-            </methodCall>'
-    """
-    return dedent(example).lstrip()
+@register.simple_tag
+def xml_rpc_example(procedure: ProcedureWrapper):
+    server_url = mark_safe('<span x-text="rpc_url()"></span>')
+    params = xmlrpc.client.dumps(tuple(_build_procedure_params(procedure))).rstrip()
+    params = indent(params, " " * 8, predicate=lambda line: line != "<params>\n")
+    tmpl = escape(
+        dedent("""
+            curl -X POST '{server_url}' \\
+                --header 'Content-Type: application/xml' \\
+                --data '<?xml version="1.0"?>
+                  <methodCall>
+                    <methodName>{procedure}</methodName>
+                    {params}
+                  </methodCall>'
+        """).lstrip()
+    )
+    return format_html(tmpl, server_url=server_url, procedure=procedure.name, params=params)
 
 
-@register.simple_tag(takes_context=True)
-def json_rpc_example(context: RequestContext, procedure: ProcedureWrapper):
-    server_url = context.request.build_absolute_uri("/rpc")
+@register.simple_tag
+def json_rpc_example(procedure: ProcedureWrapper):
+    server_url = mark_safe('<span x-text="rpc_url()"></span>')
     payload = {
         "jsonrpc": "2.0",
         "id": random.randint(1, 10000),
         "method": procedure.name,
         "params": _build_procedure_params(procedure),
     }
-    dumped_payload = json.dumps(payload, indent=2)
-    serialized_payload = indent(dumped_payload, " " * 16).lstrip()
-    example = f"""
+    payload = json.dumps(payload, indent=2)
+    payload = indent(payload, " " * 4).lstrip()
+    tmpl = dedent("""
         curl -X POST '{server_url}' \\
             --header 'Content-Type: application/json' \\
-            --data '{serialized_payload}'
-    """
-    return dedent(example).lstrip()
+            --data '{payload}'
+    """).lstrip()
+    return format_html(tmpl, server_url=server_url, payload=payload)

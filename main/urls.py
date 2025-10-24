@@ -8,4 +8,5 @@ app_name = "main"
 urlpatterns = [
     path(r"", HomePageView.as_view()),
     path("rpc", server.view),
+    path("async-rpc", server.async_view),
 ]

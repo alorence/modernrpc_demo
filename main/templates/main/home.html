@@ -62,7 +62,7 @@
       <span class="icon-[tabler--brand-github] size-5"></span>
       Source code
     </a>
-    <a class="btn btn-neutral btn-lg shadow-md" href="http://django-modern-rpc.readthedocs.io/latest/"
+    <a class="btn btn-neutral btn-lg shadow-md" href="https://django-modern-rpc.readthedocs.io/latest/"
        target="_blank">
       <span class="icon-[tabler--book-2] size-5"></span>
       Documentation
@@ -73,35 +73,33 @@
     </a>
   </div>
 
-  <div id="library-action" class="card shadow-lg">
-    <div class="card-body">
-      <h2 class="card-title text-3xl font-semibold text-secondary">Library in action</h2>
-
-      <div class="alert alert-info shadow-lg my-4">
-        <div>
-          <span class="icon-[tabler--info-circle] size-6"></span>
-          <div>
-            <p>You can try the library right now. Simply make RPC calls using your preferred client to the
-              address:</p>
-            <code class="block bg-base-200 text-base-content p-3 px-4 rounded-md mt-2 font-mono"
-            >{{ request.build_absolute_uri }}rpc</code>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
   <div class="card">
     <div class="card-header">
       <h5 class="card-title text-3xl font-semibold text-secondary">Remote procedures</h5>
     </div>
 
-    <div class="card-body">
+    <div id="library-action"
+         class="card-body"
+         x-data="{
+           want_async: true,
+           selectedTab: 1,
+           preferredProtocol: 'xml-rpc',
+           rpc_url() { return this.want_async ? '{{ async_rpc_url }}' : '{{ rpc_url }}'}
+         }">
 
       <p class="mb-4">
         Here is the full list of procedures exposed by this demo application. You can read documentation for each one
         and copy/paste the command to test it by yourself.
+      </p>
+
+      <div class="flex items-center gap-1">
+        <input type="checkbox" class="switch switch-outline switch-primary" id="switchRpcUrl" x-model="want_async" />
+        <label class="label-text text-base" for="switchRpcUrl"> Use async server </label>
+      </div>
+
+      <p class="mb-8">
+        You can try the library right now. Simply make RPC calls using your preferred client to the address:
+        <code x-text="rpc_url()" class="text-sm"></code>
       </p>
 
       {% include "main/_all-procedures-doc.html" %}

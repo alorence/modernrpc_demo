@@ -2,20 +2,20 @@
 
 <div class="flex flex-col gap-2">
 
-  <h4 class="text-accent font-semibold text-xl">{{ method }}</h4>
+  <h4 class="text-accent font-semibold text-xl">{{ procedure }}</h4>
 
   <div class="procedure-docstring">
-    {{ method.html_doc | safe | urlize }}
+    {{ procedure.html_doc | safe | urlize }}
   </div>
 
   <h6 class="font-semibold mt-3 mb-2">Parameters:</h6>
 
-  {% if method.args_doc %}
+  {% if procedure.arguments %}
     <ul class="list-inside list-disc ms-4">
-      {% for name, param_help in method.args_doc.items %}
+      {% for name, param_doc in procedure.arguments.items %}
         <li>
           <strong>{{ name }}</strong>
-          {% if param_help.type %}({{ param_help.type }}) - {% endif %}{{ param_help.text }}
+          {% if param_doc.documented_type %}({{ param_doc.documented_type }}) - {% endif %}{{ param_doc.docstring }}
         </li>
       {% endfor %}
     </ul>
@@ -25,14 +25,14 @@
 
 
   <h6 class="font-semibold mt-3 mb-2">Returns:</h6>
-  {% if method.return_doc.type or method.return_doc.text %}
+  {% if procedure.returns.docstring or procedure.returns.documented_type %}
 
     <ul class="list-inside list-disc ms-4">
       <li>
-        {% if method.return_doc.type %}
-          {{ method.return_doc.type }} -
+        {% if procedure.returns.documented_type %}
+          {{ procedure.returns.documented_type }} -
         {% endif %}
-        {{ method.return_doc.text }}
+        {{ procedure.returns.docstring }}
       </li>
     </ul>
 
@@ -54,7 +54,7 @@
       </div>
       <button type="button"
               class="rounded-field text-base-content text-sm z-1 w-32 h-8 flex items-center justify-center gap-x-2"
-              :class="preferredProtocol == 'xml-rpc' ? 'active' : ''"
+              :class="{'active': preferredProtocol === 'xml-rpc'}"
               @click="preferredProtocol = 'xml-rpc'"
               id="x-trigger-{{ forloop.counter }}" data-tab="#x-example-{{ forloop.counter }}"
               aria-controls="x-example-{{ forloop.counter }}" role="tab">
@@ -62,7 +62,7 @@
       </button>
       <button type="button"
               class="rounded-field text-base-content text-sm z-1 w-32 h-8 flex items-center justify-center gap-x-2"
-              :class="preferredProtocol == 'json-rpc' ? 'active' : ''"
+              :class="{'active': preferredProtocol === 'json-rpc'}"
               @click="preferredProtocol = 'json-rpc'"
               id="j-trigger-{{ forloop.counter }}" data-tab="#j-example-{{ forloop.counter }}"
               aria-controls="j-example-{{ forloop.counter }}" role="tab">
@@ -70,25 +70,31 @@
       </button>
     </nav>
 
-    <div id="x-example-{{ forloop.counter }}" role="tabpanel" aria-labelledby="x-trigger-{{ forloop.counter }}"
-         x-show="preferredProtocol == 'xml-rpc'" x-transition.opacity.duration.200ms>
+    <div id="x-example-{{ forloop.counter }}"
+         role="tabpanel"
+         aria-labelledby="x-trigger-{{ forloop.counter }}"
+         x-show="preferredProtocol == 'xml-rpc'"
+         x-transition.opacity.duration.200ms>
 
       <div class="mockup-code bg-base-200/70 rounded-box pb-1 relative before:content-none w-3xl">
 
         <pre id="x-code-{{ forloop.counter }}" class="overflow-x-auto text-sm"
-        ><code>{% xml_rpc_example method %}</code></pre>
+        ><code>{% xml_rpc_example procedure %}</code></pre>
 
         {% include "main/_copy-button.html" with target_prefix="x-code" %}
 
       </div>
     </div>
-    <div id="j-example-{{ forloop.counter }}" role="tabpanel" aria-labelledby="j-trigger-{{ forloop.counter }}"
-         x-show="preferredProtocol == 'json-rpc'" x-transition.opacity.duration.200ms>
+    <div id="j-example-{{ forloop.counter }}"
+         role="tabpanel"
+         aria-labelledby="j-trigger-{{ forloop.counter }}"
+         x-show="preferredProtocol == 'json-rpc'"
+         x-transition.opacity.duration.200ms>
 
       <div class="mockup-code bg-base-200/70 rounded-box pb-1 relative before:content-none w-3xl">
 
         <pre id="j-code-{{ forloop.counter }}" class="overflow-x-auto text-sm"
-        ><code>{% json_rpc_example method %}</code></pre>
+        ><code>{% json_rpc_example procedure %}</code></pre>
 
         {% include "main/_copy-button.html" with target_prefix="j-code" %}
 
