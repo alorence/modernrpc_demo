@@ -54,7 +54,9 @@ def xml_rpc_example(procedure: ProcedureWrapper):
                   </methodCall>'
         """).lstrip()
     )
-    return format_html(tmpl, server_url=server_url, procedure=procedure.name, params=params)
+    return format_html(
+        tmpl, server_url=server_url, procedure=procedure.name, params=params
+    )
 
 
 @register.simple_tag
