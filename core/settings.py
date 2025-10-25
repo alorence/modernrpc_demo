@@ -11,18 +11,20 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-import environ
-import sentry_sdk
-
 from pathlib import Path
 
+import environ
+import sentry_sdk
 from django.utils.module_loading import import_string
 from django.utils.safestring import SafeString
-
 
 # Configure some default for environment
 env = environ.Env(
     DEBUG=(bool, False),
+    ENABLE_DEBUG_LOGS=(bool, False),
+    ENVIRONMENT=(str, "dev"),
+    GTAG_PROPERTY_ID=(str, ""),
+    SENTRY_DSN=(str, ""),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -116,8 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-ENABLE_DEBUG_LOGS = env.bool("ENABLE_DEBUG_LOGS", default=False)
-if ENABLE_DEBUG_LOGS:
+if ENABLE_DEBUG_LOGS := env("ENABLE_DEBUG_LOGS"):
     LOGGING = {
         "version": 1,
         "disable_existing_loggers": False,
@@ -172,13 +173,13 @@ SECURE_SSL_REDIRECT = False  # not DEBUG
 MODERNRPC_DOC_FORMAT = "md"
 
 # Django-analytical
-GOOGLE_ANALYTICS_SITE_SPEED = True
-GOOGLE_ANALYTICS_ANONYMIZE_IP = True
-GOOGLE_ANALYTICS_GTAG_PROPERTY_ID = env.str("GTAG_PROPERTY_ID", default="")
+if GOOGLE_ANALYTICS_GTAG_PROPERTY_ID := env("GTAG_PROPERTY_ID"):
+    GOOGLE_ANALYTICS_SITE_SPEED = True
+    GOOGLE_ANALYTICS_ANONYMIZE_IP = True
 
 
 # Sentry
-if SENTRY_DSN := env("SENTRY_DSN", default=""):
+if SENTRY_DSN := env("SENTRY_DSN"):
     SENTRY_LOADER_SCRIPT = SafeString(
         '<script src="https://js.sentry-cdn.com/cededa21882d1a8611531771f9d4ab0c.min.js" crossorigin="anonymous"></script>'
     )
@@ -212,3 +213,13 @@ try:
     import_string("django_watchfiles.WatchfilesReloader")
 except ImportError:
     INSTALLED_APPS.remove("django_watchfiles")
+
+
+if env("ENVIRONMENT") == "prod":
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    SECURE_HSTS_SECONDS = 360
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
