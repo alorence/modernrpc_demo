@@ -3,7 +3,7 @@ from modernrpc import RpcNamespace, RpcRequestContext
 meta = RpcNamespace()
 
 
-@meta.register_procedure(name="util.printContentType", context_target="_ctx")
+@meta.register_procedure(name="printContentType", context_target="_ctx")
 def content_type_printer(_ctx: RpcRequestContext):
     """
     Inspect the incoming request and extract the Content-Type header if present.

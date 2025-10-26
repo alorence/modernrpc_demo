@@ -6,7 +6,7 @@ from modernrpc.exceptions import RPCException, RPC_CUSTOM_ERROR_BASE
 errors = RpcNamespace()
 
 
-@errors.register_procedure(name="errors.custom")
+@errors.register_procedure(name="custom")
 def custom_error():
     """
     Raise a custom RPC exception.
@@ -16,7 +16,7 @@ def custom_error():
     raise RPCException(RPC_CUSTOM_ERROR_BASE + 1, "This is a custom error")
 
 
-@errors.register_procedure(name="errors.unserializable_result")
+@errors.register_procedure(name="unserializable_result")
 def unserializable_result():
     """
     Return a value that cannot be serialized by the RPC transport.

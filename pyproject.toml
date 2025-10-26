@@ -5,7 +5,7 @@ description = "Demo website for django-modern-rpc"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "django~=5.2",
+    "django>=6.0a1,<7.0",
     "django-analytical>=3.1.0",
     "django-environ>=0.12.0",
     "django-modern-rpc>=2.0a3",

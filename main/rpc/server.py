@@ -2,9 +2,9 @@ import sentry_sdk
 
 from modernrpc import RpcRequestContext, RpcServer
 
-from .errors import errors
-from .math import math
-from .meta import meta
+from main.rpc.errors import errors
+from main.rpc.math import math
+from main.rpc.meta import meta
 
 
 def main_error_handler(exc: BaseException, _: RpcRequestContext) -> None:
@@ -13,6 +13,6 @@ def main_error_handler(exc: BaseException, _: RpcRequestContext) -> None:
 
 server = RpcServer(error_handler=main_error_handler)
 
-server.register_namespace(errors)
-server.register_namespace(math)
-server.register_namespace(meta)
+server.register_namespace(errors, "errors")
+server.register_namespace(math, "math")
+server.register_namespace(meta, "utils")
