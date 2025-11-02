@@ -15,6 +15,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+      <excludePattern pattern="*/.nox/*" />
     </content>
     <orderEntry type="jdk" jdkName="uv (dmr-demo)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
