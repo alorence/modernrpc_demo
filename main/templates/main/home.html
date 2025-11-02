@@ -21,22 +21,22 @@
   {% analytical_head_bottom %}
 </head>
 
-<body class="bg-base-200 py-12" data-theme="soft">
+<body class="bg-base-200 py-12" data-theme="corporate">
 {% analytical_body_top %}
 
 <div class="container mx-auto flex flex-col gap-8">
 
   <div
-    class="hero bg-gradient-to-b from-primary/40 to-secondary/30 text-base-content rounded-box p-8 shadow-lg col-span-3">
+    class="hero bg-gradient-to-br from-neutral/90 to-neutral/60 text-neutral-content rounded-box p-6 shadow-lg">
     <div class="hero-content text-center">
-      <div>
-        <h1 class="text-4xl font-extrabold mb-4">Django-modern-rpc</h1>
-        <p class="text-lg">A powerful RPC framework for Django applications</p>
-        <div class="badge badge-secondary badge-lg mt-4">v{{ modernrpc_version }}</div>
-        <div class="mt-6">
-          <a href="#library-action" class="btn btn-primary btn-sm">Get Started</a>
-        </div>
-      </div>
+
+      <h1 class="text-4xl font-extrabold mb-4 w-fit mx-auto relative">
+        <span class="badge badge-neutral badge-sm absolute -end-16 font-semibold">v{{ modernrpc_version }}</span>
+        Django-modern-rpc
+      </h1>
+      <p class="text-lg">A powerful RPC framework for Django applications</p>
+
+      <a href="#library-action" class="btn btn-accent mt-4">Get Started</a>
     </div>
   </div>
 
@@ -51,55 +51,57 @@
         <a href="https://pypi.python.org/pypi/django-modern-rpc"
            title="django-modern-rpc on PyPi"
            class="link link-primary link-hover font-medium">Django-modern-rpc</a>
-        is a Django library that helps you enable JSON and XML-RPC servers in your application. It is easy to install
-        and configure, and highly customizable. This website shows the library in action.
+        is a Django library that helps you enable JSON and XML-RPC servers in your application. It is easy
+        to install and configure, and highly customizable. This website shows the library in action.
       </p>
     </div>
   </div>
 
   <div class="flex flex-wrap gap-3 justify-center">
-    <a class="btn btn-accent btn-lg shadow-md" href="https://github.com/alorence/django-modern-rpc" target="_blank">
+    <a class="btn btn-primary btn-lg shadow-md" href="https://github.com/alorence/django-modern-rpc" target="_blank">
       <span class="icon-[tabler--brand-github] size-5"></span>
       Source code
     </a>
-    <a class="btn btn-neutral btn-lg shadow-md" href="https://django-modern-rpc.readthedocs.io/latest/"
+    <a class="btn btn-secondary btn-lg shadow-md" href="https://django-modern-rpc.readthedocs.io/latest/"
        target="_blank">
       <span class="icon-[tabler--book-2] size-5"></span>
       Documentation
     </a>
-    <a class="btn btn-neutral btn-lg shadow-md" href="https://pypi.python.org/pypi/django-modern-rpc" target="_blank">
+    <a class="btn btn-secondary btn-lg shadow-md" href="https://pypi.python.org/pypi/django-modern-rpc" target="_blank">
       <span class="icon-[tabler--download] size-5"></span>
       Library on PyPi
     </a>
   </div>
 
-  <div class="card">
-    <div class="card-header">
-      <h5 class="card-title text-3xl font-semibold text-secondary">Remote procedures</h5>
-    </div>
+  <div class="card shadow-xl"
+       x-data="{
+         want_async: true,
+         selectedTab: 1,
+         preferredProtocol: 'xml-rpc',
+         rpc_url() { return this.want_async ? '{{ async_rpc_url }}' : '{{ rpc_url }}'}
+       }">
 
-    <div id="library-action"
-         class="card-body"
-         x-data="{
-           want_async: true,
-           selectedTab: 1,
-           preferredProtocol: 'xml-rpc',
-           rpc_url() { return this.want_async ? '{{ async_rpc_url }}' : '{{ rpc_url }}'}
-         }">
+    <div class="card-header flex justify-between items-center">
 
-      <p class="mb-4">
-        Here is the full list of procedures exposed by this demo application. You can read documentation for each one
-        and copy/paste the command to test it by yourself.
-      </p>
-
+      <h5 class="card-title text2xl font-semibold text-primary">Remote procedures</h5>
       <div class="flex items-center gap-1">
-        <input type="checkbox" class="switch switch-outline switch-primary" id="switchRpcUrl" x-model="want_async" />
-        <label class="label-text text-base" for="switchRpcUrl"> Use async server </label>
+        <input type="checkbox" class="switch switch-outline" id="switchRpcUrl" x-model="want_async" />
+        <label class="label-text text-base" for="switchRpcUrl">Prefer async</label>
       </div>
 
-      <p class="mb-8">
-        You can try the library right now. Simply make RPC calls using your preferred client to the address:
-        <code x-text="rpc_url()" class="text-sm"></code>
+    </div>
+
+    <div id="library-action" class="card-body">
+
+      <p class="mb-4">
+        Here is the full list of procedures exposed by this demo application. You can read the documentation for each
+        one and copy/paste the command into your preferred terminal to try it by yourself.
+        Both sync and async versions of the view are available. Use the selector on top-right to switch between them.
+        The currently select server is available to RPC calls at this URL:
+      </p>
+
+      <p class="text-accent text-center text-xl">
+        <code x-text="rpc_url()" class="bg-secondary/10 px-8 py-4"></code>
       </p>
 
       {% include "main/_all-procedures-doc.html" %}
@@ -107,31 +109,27 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
     <div
-      class="card bg-gradient-to-br from-primary/10 to-primary/30 shadow-xl hover:shadow-2xl transition-all duration-300">
+      class="card bg-gradient-to-br from-secondary/30 to-secondary/20 shadow-lg">
       <div class="card-body">
-        <h3 class="card-title text-xl font-semibold text-primary">
+        <h3 class="card-title text-xl font-semibold">
           <span class="icon-[tabler--world-www] size-5 mr-2"></span>
           About this website
         </h3>
         <p class="py-2">
           The source code of this website is available on
           <a href="https://github.com/alorence/modernrpc_demo" class="link link-primary font-medium">GitHub</a>.
+          If you find any issue or have a suggestion, please open an issue on the project's repository.
         </p>
-        <div class="card-actions justify-end">
-          <a href="https://github.com/alorence/modernrpc_demo" class="btn btn-sm btn-primary btn-outline"
-             target="_blank">
-            View Source
-          </a>
-        </div>
       </div>
     </div>
 
     <div
-      class="card bg-gradient-to-br from-secondary/10 to-secondary/30 shadow-xl hover:shadow-2xl transition-all duration-300">
+      class="card bg-gradient-to-br from-secondary/10 to-secondary/30 shadow-lg">
       <div class="card-body">
-        <h3 class="card-title text-xl font-semibold text-secondary">
+        <h3 class="card-title text-xl font-semibold">
           <span class="icon-[tabler--heart] size-5 mr-2"></span>
           About django-modern-rpc
         </h3>
@@ -143,13 +141,15 @@
         </p>
         <div class="card-actions justify-end">
           <a href="https://djangopackages.org/packages/p/django-modern-rpc/"
-             class="btn btn-sm btn-secondary btn-outline" target="_blank">
+             class="btn btn-secondary btn-outline" target="_blank">
             Vote Now
           </a>
         </div>
       </div>
     </div>
+
   </div>
+
 </div> <!-- /container -->
 
 {% analytical_body_bottom %}
