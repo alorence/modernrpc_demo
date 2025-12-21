@@ -1,6 +1,6 @@
 {% load rpc %}
 
-<div class="flex flex-col gap-2 w-3xl p-4">
+<div class="flex flex-col gap-2 w-full p-4">
 
   <h4 class="text-primary font-semibold text-xl flex justify-between">
     {{ procedure }}
@@ -90,10 +90,10 @@
            x-show="preferredProtocol == 'xml-rpc'"
            x-transition.opacity.duration.200ms>
 
-        <div class="mockup-code bg-base-200/70 rounded-box pb-1 relative before:content-none">
+        <div class="mockup-code bg-base-200/70 rounded-box px-4 py-8 relative before:content-none">
 
-        <pre id="x-code-{{ forloop.counter }}" class="overflow-x-auto text-sm"
-        ><code>{% xml_rpc_example procedure %}</code></pre>
+          <pre id="x-code-{{ forloop.counter }}" class="overflow-x-auto text-sm"
+          ><code>{% xml_rpc_example procedure %}</code></pre>
 
           {% include "main/_copy-button.html" with target_prefix="x-code" %}
 
@@ -106,10 +106,10 @@
            x-show="preferredProtocol == 'json-rpc'"
            x-transition.opacity.duration.200ms>
 
-        <div class="mockup-code bg-base-200/70 rounded-box pb-1 relative before:content-none">
+        <div class="mockup-code bg-base-200/70 rounded-box px-4 py-8 relative before:content-none">
 
-        <pre id="j-code-{{ forloop.counter }}" class="overflow-x-auto text-sm"
-        ><code>{% json_rpc_example procedure %}</code></pre>
+          <pre id="j-code-{{ forloop.counter }}" class="overflow-x-auto text-sm"
+          ><code>{% json_rpc_example procedure %}</code></pre>
 
           {% include "main/_copy-button.html" with target_prefix="j-code" %}
 

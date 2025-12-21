@@ -1,4 +1,4 @@
-<div class="flex px-4">
+<div class="flex">
   <nav class="tabs tabs-bordered tabs-vertical"
        aria-label="Tabs"
        role="tablist"
@@ -22,7 +22,7 @@
     {% endfor %}
   </nav>
 
-  <div class="px-8 grow">
+  <div class="grow ps-6">
 
     {% for procedure in procedures %}
       <div id="doc-{{ forloop.counter }}"
