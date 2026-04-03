@@ -1,7 +1,8 @@
 from django.urls import path
 
-from main.views import HomePageView
 from main.rpc.server import server
+from main.views import HomePageView
+
 
 app_name = "main"
 

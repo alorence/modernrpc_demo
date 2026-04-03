@@ -26,7 +26,9 @@ async def sleep(seconds: float) -> float:
     return float(seconds)
 
 
-async def _fetch_text(client: httpx.AsyncClient, url: str, timeout: float | None) -> dict[str, Any]:
+async def _fetch_text(
+    client: httpx.AsyncClient, url: str, timeout: float | None
+) -> dict[str, Any]:
     resp = await client.get(url, timeout=timeout)
     # Limit content to a reasonable size to avoid huge payloads over RPC
     text = resp.text
