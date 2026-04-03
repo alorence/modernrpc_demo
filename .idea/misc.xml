@@ -4,7 +4,7 @@
     <option name="pathToExecutable" value="/usr/bin/black" />
     <option name="sdkName" value="uv (dmr-demo)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="uv (dmr-demo)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" />
   <component name="PythonCompatibilityInspectionAdvertiser">
     <option name="version" value="3" />
   </component>
