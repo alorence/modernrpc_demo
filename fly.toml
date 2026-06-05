@@ -5,30 +5,30 @@
 
 app = 'modernrpc'
 primary_region = 'cdg'
-console_command = '/code/manage.py shell'
+console_command = 'python manage.py shell'
 
 [build]
 
 [deploy]
-  release_command = 'python manage.py migrate --noinput'
+release_command = 'echo "Deployment in progress..."'
 
 [env]
-  DEBUG = 0
-  ENABLE_DEBUG_LOGS = 0
+DEBUG = 0
+ENABLE_DEBUG_LOGS = 0
 
 [http_service]
-  internal_port = 8099
-  force_https = true
-  auto_stop_machines = 'stop'
-  auto_start_machines = true
-  min_machines_running = 0
-  processes = ['app']
+internal_port = 8099
+force_https = true
+auto_stop_machines = 'stop'
+auto_start_machines = true
+min_machines_running = 0
+processes = ['app']
 
 [[vm]]
-  memory = '512mb'
-  cpu_kind = 'shared'
-  cpus = 1
+memory = '512mb'
+cpu_kind = 'shared'
+cpus = 1
 
 [[statics]]
-  guest_path = '/code/static'
-  url_prefix = '/static/'
+guest_path = '/code/static'
+url_prefix = '/static/'
