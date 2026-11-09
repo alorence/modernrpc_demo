@@ -14,7 +14,6 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/.venv" />
       <excludePattern pattern="*/.nox/*" />
     </content>
     <orderEntry type="jdk" jdkName="uv (dmr-demo)" jdkType="Python SDK" />
@@ -23,13 +22,5 @@
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
     <option name="myDocStringFormat" value="Plain" />
-  </component>
-  <component name="TemplatesService">
-    <option name="TEMPLATE_CONFIGURATION" value="Django" />
-    <option name="TEMPLATE_FOLDERS">
-      <list>
-        <option value="$MODULE_DIR$/main/templates" />
-      </list>
-    </option>
   </component>
 </module>
