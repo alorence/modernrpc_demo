@@ -12,7 +12,8 @@ FROM node:${NODE_VERSION} AS frontend
 ARG BUILD_DIR
 
 WORKDIR ${BUILD_DIR}
-RUN corepack enable
+# pnpm via npm (corepack n'est plus fourni avec Node.js ≥ 25)
+RUN npm install -g pnpm@11
 
 RUN --mount=source=package.json,target=package.json \
     --mount=source=pnpm-lock.yaml,target=pnpm-lock.yaml \
