@@ -1,7 +1,7 @@
 # syntax=docker.io/docker/dockerfile:1.7-labs  # Allow COPY --parents syntax (unofficial syntax)
-ARG PYTHON_VERSION=3.14-alpine
+ARG PYTHON_VERSION=3.15-alpine
 ARG NODE_VERSION=lts-alpine
-ARG UV_VERSION=0.11.19
+ARG UV_VERSION=0.13.7
 
 ARG DEFAULT_LISTEN_PORT=8099
 ARG BUILD_DIR=/build
