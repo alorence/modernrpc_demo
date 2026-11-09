@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev:css": "tailwindcss --watch -i ./www/index.css -o ./dist/app.css",
-    "dev:js": "rollup -c --watch",
+    "dev:js": "rolldown -c --watch",
     "dev:all": "uvx honcho start",
-    "build:prod": "rollup -c && tailwindcss --minify -i ./www/index.css -o ./dist/app.css"
+    "build:prod": "rolldown -c && tailwindcss --minify -i ./www/index.css -o ./dist/app.css"
   },
   "keywords": [],
   "author": "",
@@ -16,13 +16,11 @@
   "dependencies": {
     "@iconify-json/tabler": "^1.2.43",
     "@iconify/tailwind4": "^1.2.3",
-    "@rollup/plugin-node-resolve": "^16.0.3",
     "@tailwindcss/cli": "^4.3.5",
     "alpinejs": "^3.17.5",
     "clipboard": "^2.0.11",
     "flyonui": "^2.4.1",
-    "rollup": "^4.68.2",
-    "rollup-plugin-copy": "^3.5.0",
+    "rolldown": "^1.3.1",
     "tailwindcss": "^4.3.5"
   }
 }

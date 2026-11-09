@@ -20,7 +20,7 @@ RUN --mount=source=package.json,target=package.json \
 
 RUN --mount=source=package.json,target=package.json \
     --mount=source=pnpm-lock.yaml,target=pnpm-lock.yaml \
-    --mount=source=rollup.config.mjs,target=rollup.config.mjs \
+    --mount=source=rolldown.config.mjs,target=rolldown.config.mjs \
     --mount=source=www,target=www \
     --mount=source=main,target=main \
     pnpm run build:prod

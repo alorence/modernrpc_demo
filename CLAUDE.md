@@ -33,7 +33,7 @@ uvx honcho start
 # OR start services individually:
 uv run python manage.py runserver  # Django server
 pnpm run dev:css                   # Tailwind CSS watcher
-pnpm run dev:js                    # Rollup in watch mode
+pnpm run dev:js                    # Rolldown in watch mode
 ```
 
 ### Production build
@@ -115,7 +115,7 @@ The `core/settings.py` file uses **django-environ** to manage configuration:
 - **Tailwind CSS 4**: Compiles `www/index.css` → `dist/app.css`
   - Inline configuration in `www/index.css` (no tailwind.config.js)
   - Uses FlyOnUI for UI components
-- **Rollup**: Bundles `www/index.js` → `dist/app.js`
+- **Rolldown**: Bundles `www/index.js` → `dist/app.js`
   - Includes Alpine.js and related modules
   - Copies clipboard.js and helper-clipboard.js to dist/
 - **Static files**: Django collects from `dist/` to `static/` with Whitenoise (compression + manifest)
